@@ -1,12 +1,18 @@
 "use strict";
 
-///////////////////////////////////////
-// Modal window
-
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+const nav = document.querySelector(".nav");
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabsContent = document.querySelectorAll(".operations__content");
+
+///////////////////////////////////////
+// Modal window
 
 const openModal = function (e) {
   e.preventDefault();
@@ -30,19 +36,34 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////
+// Button scrolling
+btnScrollTo.addEventListener("click", function (e) {
+  // const s1coords = section1.getBoundingClientRect();
+  // console.log(s1coords);
 
-const message = document.createElement("div");
-message.classList.add("cookie-message");
+  // console.log(e.target.getBoundingClientRect());
 
-message.innerHTML = `We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>`;
+  // console.log("Current scroll (X/Y)", window.pageXOffset, window.pageYOffset);
 
-const header = document.querySelector(".header");
-header.append(message);
+  // console.log(
+  //   "height/width viewport",
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth
+  // );
 
-document
-  .querySelector(".btn--close-cookie")
-  .addEventListener("click", function () {
-    message.remove();
-    // message.parentElement.removeChild(message);
-  });
+  // Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  // Use this way only.
+  section1.scrollIntoView({ behavior: "smooth" });
+});
